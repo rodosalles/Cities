@@ -13,12 +13,13 @@
 
   <tbody>
     <% @states.each do |state| %>
+
       <tr>
         <td><%= state.name %></td>
         <td><%= state.acronym %></td>
-        <td><%= link_to 'Show', state %></td>
-        <td><%= link_to 'Edit', edit_state_path(state) %></td>
-        <td><%= link_to 'Destroy', state, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', country_state_path(state.country.id, state) %></td>
+        <td><%= link_to 'Edit', edit_country_state_path(state.country.id, state) %></td>
+        <td><%= link_to 'Destroy', country_state_path(state.country.id, state), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +27,4 @@
 
 <br>
 
-<%= link_to 'New State', new_state_path %>
+<%= link_to 'New State', new_country_state_path %>

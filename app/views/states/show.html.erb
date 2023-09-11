@@ -10,5 +10,10 @@
   <%= @state.acronym %>
 </p>
 
+<p>
+  <strong>Cities:</strong>
+  <%= link_to 'Cities', state_cities_path %>
+</p>
+
 <%= link_to 'Edit', edit_state_path(@state) %> |
-<%= link_to 'Back', states_path %>
+<%= link_to 'Back', country_states_path(@country) %>

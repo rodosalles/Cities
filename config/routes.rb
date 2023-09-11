@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :cities
-  resources :states
-  resources :countries
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :countries do
+    resources :states do
+      resources :cities
+    end
+  end
 end
