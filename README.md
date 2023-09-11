@@ -9,6 +9,7 @@
 # Starting the application
 
 ```bash
+$ docker compose build
 $ docker compose up
 ```
 
