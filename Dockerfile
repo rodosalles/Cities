@@ -1,19 +1,25 @@
-# Use a imagem oficial do Ruby 2.7 como base
-FROM ruby:2.7
+# Use a oficial image from Ruby 2.7.0 
+FROM ruby:2.7.0
 
-# Define a pasta de trabalho no container
+# Define a workdir on container
 WORKDIR /app
 
-# Instalação das dependências do sistema
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client
+# Install all dependencies from system
+RUN apt-get update -qq && apt-get install -y \
+    nodejs \
+    yarn \
+    postgresql-client
 
-# Copia os arquivos Gemfile e Gemfile.lock para o container
+# Install gem
+RUN gem install bundler:2.4.19 
+
+# Copy files Gemfile e Gemfile.lock to a container
 COPY Gemfile Gemfile.lock ./
 
-# Instala as gemas
-RUN gem install bundler && bundle install
+# Install gems
+RUN bundle install
 
-# Copia o restante dos arquivos para o container
+# Copy files to a container
 COPY . .
 
 # Add a script to be executed every time the container starts.
@@ -22,6 +28,6 @@ RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 EXPOSE 3000
 
-# Comando para iniciar o servidor Rails
+# Comamnd to start the rails server
 CMD ["rails", "server", "-b", "0.0.0.0"]
 
