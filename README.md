@@ -1,24 +1,42 @@
 # README
+- Ruby version 2.7.0
+- Rails version 5.2.6
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Pre-requisites
 
-Things you may want to cover:
+- Docker-Compose
 
-* Ruby version
+# Starting the application
 
-* System dependencies
+```bash
+$ docker compose up
+```
 
-* Configuration
+# Setting up the database
 
-* Database creation
+```bash
+$ docker ps
+$ docker exec -it <CONTAINER_ID> rails db:migrate
+$ docker exec -it <CONTAINER_ID> rails db:seed
+```
 
-* Database initialization
+# Creating a Pull-Request
 
-* How to run the test suite
+```bash
+$ git checkout main
+$ git pull origin main —rebase
+$ git checkout -b <INITIALS>-main/<BRANCH_TYPE>/feature-name
+$ git add .
+$ git commit -m "Add commit message"
+$ git push origin <INITIALS>-main/<BRANCH_TYPE>/feature-name
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+# Navigating in Api
 
-* Deployment instructions
+https://localhost:3000
 
-* ...
+# Running the tests
+
+```bash
+$ docker exec -it <CONTAINER_ID> rspec
+```
