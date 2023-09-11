@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
+  root 'countries#index'
+
   resources :countries do
-    resources :states do
-      resources :cities
-    end
+    resources :states
+  end
+
+  resources :states, only: [] do
+    resources :cities
   end
 end

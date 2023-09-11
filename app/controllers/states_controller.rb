@@ -19,7 +19,7 @@ class StatesController < ApplicationController
 
     respond_to do |format|
       if @state.save
-        format.html { redirect_to state_url(@state), notice: 'State was successfully created.' }
+        format.html { redirect_to country_state_url(@state), notice: 'State was successfully created.' }
         format.json { render :show, status: :created, location: @state }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -30,8 +30,8 @@ class StatesController < ApplicationController
 
   def update
     respond_to do |format|
-      if @state.update(state_params)
-        format.html { redirect_to state_url(@state), notice: 'State was successfully updated.' }
+      if @state.update!(state_params)
+        format.html { redirect_to country_states_url(@state), notice: 'State was successfully updated.' }
         format.json { render :show, status: :ok, location: @state }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -44,7 +44,7 @@ class StatesController < ApplicationController
     @state.destroy
 
     respond_to do |format|
-      format.html { redirect_to states_url, notice: 'State was successfully destroyed.' }
+      format.html { redirect_to country_states_url(@state.country_id), notice: 'State was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

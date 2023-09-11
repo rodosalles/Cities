@@ -2,5 +2,5 @@
 
 <%= render 'form', state: @state %>
 
-<%= link_to 'Show', @state %> |
-<%= link_to 'Back', states_path %>
+<%= link_to 'Show', country_state_path(@state.country_id, @state) %> |
+<%= link_to 'Back', country_states_path %>
