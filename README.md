@@ -17,6 +17,7 @@ $ docker compose up
 
 ```bash
 $ docker ps
+$ web CONTAINER_ID
 $ docker exec -it <CONTAINER_ID> rails db:migrate
 $ docker exec -it <CONTAINER_ID> rails db:seed
 ```
